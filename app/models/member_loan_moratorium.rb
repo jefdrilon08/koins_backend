@@ -1,0 +1,2 @@
+class MemberLoanMoratorium < ApplicationRecord
+end

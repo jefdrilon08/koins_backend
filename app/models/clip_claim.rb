@@ -1,0 +1,2 @@
+class ClipClaim < ApplicationRecord
+end

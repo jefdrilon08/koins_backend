@@ -1,0 +1,2 @@
+class AmortizationScheduleEntry < ApplicationRecord
+end

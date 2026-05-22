@@ -1,0 +1,2 @@
+class BranchPsrRecord < ApplicationRecord
+end

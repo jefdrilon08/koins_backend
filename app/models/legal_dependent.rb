@@ -1,0 +1,2 @@
+class LegalDependent < ApplicationRecord
+end

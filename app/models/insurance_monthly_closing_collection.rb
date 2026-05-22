@@ -1,0 +1,2 @@
+class InsuranceMonthlyClosingCollection < ApplicationRecord
+end

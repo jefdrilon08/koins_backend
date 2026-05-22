@@ -1,0 +1,2 @@
+class MembershipArrangement < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AdminBarangay < ApplicationRecord
+end

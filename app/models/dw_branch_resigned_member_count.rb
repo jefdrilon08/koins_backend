@@ -1,0 +1,2 @@
+class DwBranchResignedMemberCount < ApplicationRecord
+end

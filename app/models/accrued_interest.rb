@@ -1,0 +1,2 @@
+class AccruedInterest < ApplicationRecord
+end

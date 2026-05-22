@@ -1,0 +1,2 @@
+class WithdrawalCollection < ApplicationRecord
+end

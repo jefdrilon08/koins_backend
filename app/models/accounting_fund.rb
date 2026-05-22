@@ -1,0 +1,2 @@
+class AccountingFund < ApplicationRecord
+end

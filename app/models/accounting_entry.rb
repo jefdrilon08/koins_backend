@@ -1,0 +1,2 @@
+class AccountingEntry < ApplicationRecord
+end

@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  username: <%= ENV["KOINS_DATABASE_USERNAME"] %>
+  password: <%= ENV["KOINS_DATABASE_PASSWORD"] %>
+  host: <%= ENV["KOINS_DATABASE_HOST"] %>
+  port: <%= ENV["KOINS_DATABASE_PORT"] %>
+development:
+  <<: *default
+  database: <%= ENV['KOINS_DATABASE_NAME'] %>
+test:
+  <<: *default
+  database: koins_2_test
+production:
+  <<: *default
+  database: <%= ENV['KOINS_DATABASE_NAME'] %>
+  username: <%= ENV['KOINS_DATABASE_USERNAME'] %>
+  password: <%= ENV['KOINS_DATABASE_PASSWORD'] %>

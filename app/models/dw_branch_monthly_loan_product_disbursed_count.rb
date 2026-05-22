@@ -1,0 +1,2 @@
+class DwBranchMonthlyLoanProductDisbursedCount < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class InsuranceWithdrawalCollection < ApplicationRecord
+end

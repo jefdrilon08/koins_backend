@@ -1,0 +1,2 @@
+class EntryDistribution < ApplicationRecord
+end

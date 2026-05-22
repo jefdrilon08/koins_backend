@@ -1,0 +1,2 @@
+class AccruedBilling < ApplicationRecord
+end

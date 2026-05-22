@@ -1,0 +1,2 @@
+class DataStore < ApplicationRecord
+end

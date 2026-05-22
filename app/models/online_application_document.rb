@@ -1,0 +1,2 @@
+class OnlineApplicationDocument < ApplicationRecord
+end

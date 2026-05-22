@@ -1,0 +1,2 @@
+class AdminProvince < ApplicationRecord
+end

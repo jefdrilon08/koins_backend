@@ -1,0 +1,2 @@
+class BackendJob < ApplicationRecord
+end

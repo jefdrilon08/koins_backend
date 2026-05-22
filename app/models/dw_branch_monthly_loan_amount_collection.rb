@@ -1,0 +1,2 @@
+class DwBranchMonthlyLoanAmountCollection < ApplicationRecord
+end

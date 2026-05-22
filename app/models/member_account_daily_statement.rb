@@ -1,0 +1,2 @@
+class MemberAccountDailyStatement < ApplicationRecord
+end

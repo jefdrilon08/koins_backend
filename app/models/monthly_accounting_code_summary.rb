@@ -1,0 +1,2 @@
+class MonthlyAccountingCodeSummary < ApplicationRecord
+end

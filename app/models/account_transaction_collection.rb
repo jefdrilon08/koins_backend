@@ -1,0 +1,2 @@
+class AccountTransactionCollection < ApplicationRecord
+end

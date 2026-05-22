@@ -1,0 +1,2 @@
+class ApiOtherProduct < ApplicationRecord
+end

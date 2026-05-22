@@ -1,0 +1,2 @@
+class ActiveStorageVariantRecord < ApplicationRecord
+end

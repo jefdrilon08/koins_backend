@@ -1,0 +1,2 @@
+class TransferMemberRecord < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class MemberMoratorium < ApplicationRecord
+end

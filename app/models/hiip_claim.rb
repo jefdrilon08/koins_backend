@@ -1,0 +1,2 @@
+class HiipClaim < ApplicationRecord
+end

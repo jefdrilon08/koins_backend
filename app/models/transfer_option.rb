@@ -1,0 +1,2 @@
+class TransferOption < ApplicationRecord
+end

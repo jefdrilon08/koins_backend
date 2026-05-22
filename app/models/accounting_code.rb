@@ -1,0 +1,2 @@
+class AccountingCode < ApplicationRecord
+end

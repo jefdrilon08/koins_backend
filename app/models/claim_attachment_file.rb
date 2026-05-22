@@ -1,0 +1,2 @@
+class ClaimAttachmentFile < ApplicationRecord
+end

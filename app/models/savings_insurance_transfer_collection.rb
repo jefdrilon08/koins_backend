@@ -1,0 +1,2 @@
+class SavingsInsuranceTransferCollection < ApplicationRecord
+end

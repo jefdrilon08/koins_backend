@@ -1,0 +1,2 @@
+class LoanRepaymentRate < ApplicationRecord
+end

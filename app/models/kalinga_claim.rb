@@ -1,0 +1,2 @@
+class KalingaClaim < ApplicationRecord
+end

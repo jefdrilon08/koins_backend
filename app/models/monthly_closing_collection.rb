@@ -1,0 +1,2 @@
+class MonthlyClosingCollection < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class MakePayment < ApplicationRecord
+end

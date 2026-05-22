@@ -1,0 +1,2 @@
+class OnlineApplication < ApplicationRecord
+end

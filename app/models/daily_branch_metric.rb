@@ -1,0 +1,2 @@
+class DailyBranchMetric < ApplicationRecord
+end

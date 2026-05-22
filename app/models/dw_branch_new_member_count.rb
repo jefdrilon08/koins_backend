@@ -1,0 +1,2 @@
+class DwBranchNewMemberCount < ApplicationRecord
+end

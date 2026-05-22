@@ -1,0 +1,2 @@
+class KpfLoanClip < ApplicationRecord
+end

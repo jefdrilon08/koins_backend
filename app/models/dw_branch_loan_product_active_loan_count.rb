@@ -1,0 +1,2 @@
+class DwBranchLoanProductActiveLoanCount < ApplicationRecord
+end

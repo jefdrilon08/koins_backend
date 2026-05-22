@@ -1,0 +1,2 @@
+class LoanProductTagging < ApplicationRecord
+end

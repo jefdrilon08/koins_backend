@@ -1,0 +1,2 @@
+class CalamityClaim < ApplicationRecord
+end

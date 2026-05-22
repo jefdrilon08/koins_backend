@@ -1,0 +1,2 @@
+class ProjectTypeCategory < ApplicationRecord
+end

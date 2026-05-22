@@ -1,0 +1,2 @@
+class AccountingCodeBalance < ApplicationRecord
+end

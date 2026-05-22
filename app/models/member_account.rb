@@ -1,0 +1,2 @@
+class MemberAccount < ApplicationRecord
+end

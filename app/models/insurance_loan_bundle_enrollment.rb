@@ -1,0 +1,2 @@
+class InsuranceLoanBundleEnrollment < ApplicationRecord
+end

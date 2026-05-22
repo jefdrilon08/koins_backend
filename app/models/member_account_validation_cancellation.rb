@@ -1,0 +1,2 @@
+class MemberAccountValidationCancellation < ApplicationRecord
+end

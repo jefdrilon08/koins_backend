@@ -1,0 +1,2 @@
+class FileRepository < ApplicationRecord
+end

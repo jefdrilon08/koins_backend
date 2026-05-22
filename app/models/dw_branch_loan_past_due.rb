@@ -1,0 +1,2 @@
+class DwBranchLoanPastDue < ApplicationRecord
+end

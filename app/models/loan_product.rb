@@ -1,0 +1,2 @@
+class LoanProduct < ApplicationRecord
+end

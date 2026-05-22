@@ -1,0 +1,2 @@
+class AdministrationBranchClosingRecord < ApplicationRecord
+end
