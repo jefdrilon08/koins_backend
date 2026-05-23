@@ -11,6 +11,22 @@ Rails.application.routes.draw do
         end
       end
       #resources :students
+      namespace :member do
+        resources :shares, only: [:index]
+        resources :accounts, only: [:index] do 
+          collection do
+            get :equity
+          end
+        end
+
+        get "loans", to: "loans#index"
+        get "loans/:loan_id/amortization_schedule",
+          to: "amortization_schedule#index"
+
+        get "/transactions/:account_id",
+        to: "transactions#index"
+
+      end
     end
   end
 

@@ -4,7 +4,7 @@ module Api
       skip_before_action :authorize_request, only: [:login]
 
       def login
-        member = Member.find_by(username: params[:username])
+        member = ::Member.find_by(username: params[:username])
 
         if member && valid_password?(member, params[:password])
           token = JsonWebToken.encode(member_id: member.id)
