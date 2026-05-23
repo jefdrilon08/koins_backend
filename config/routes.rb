@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         end
       end
       #resources :students
+      get "/health", to: proc { [200, {}, ["OK"]] }
     end
   end
 
