@@ -7,7 +7,18 @@ module Api
         member = ::Member.find_by(username: params[:username])
 
         if member && valid_password?(member, params[:password])
+
           token = JsonWebToken.encode(member_id: member.id)
+
+          branch = Branch.find_by(id: member.branch_id)
+          center = Center.find_by(id: member.center_id)
+
+          membership_payment = MembershipPaymentRecord.where(
+            member_id: member.id,
+            status: "paid",
+            membership_name: "K-KOOP",
+            date_voided: nil
+          ).order(date_paid: :asc).first
 
           render json: {
             token: token,
@@ -17,12 +28,19 @@ module Api
               first_name: member.first_name,
               last_name: member.last_name,
               branch_id: member.branch_id,
+              branch_name: branch&.name,
               center_id: member.center_id,
-              status: member.status
+              center_name: center&.name,
+              status: member.status,
+              identification_number: member.identification_number,
+              date_of_membership: membership_payment&.date_paid
             }
           }
+
         else
-          render json: { error: "Invalid username or password" }, status: :unauthorized
+          render json: {
+            error: "Invalid username or password"
+          }, status: :unauthorized
         end
       end
 
