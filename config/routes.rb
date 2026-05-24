@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "/login", to: "authentication#login"
       post "member/login", to: "member_authentication#login"
+      get "project_type_categories",
+        to: "project_types#categories"
+
+      get "project_types",
+        to: "project_types#index"
 
       resources :billings, only: [:index, :show, :create] do 
         collection do
@@ -12,6 +17,7 @@ Rails.application.routes.draw do
       end
       #resources :students
       namespace :member do
+        resources :co_makers, only: [:index]
         resources :shares, only: [:index]
         resources :accounts, only: [:index] do 
           collection do
@@ -25,6 +31,12 @@ Rails.application.routes.draw do
 
         get "/transactions/:account_id",
         to: "transactions#index"
+      
+      resources :loan_products,
+        only: [:index]
+
+      resources :loan_applications,
+        only: [:index, :create]
 
       end
     end
