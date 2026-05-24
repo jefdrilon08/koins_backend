@@ -46,6 +46,7 @@ gem 'zip-zip'
 gem "ruby-vips", "~> 2.1.4"
 gem 'rqrcode', '~> 3.1'
 gem 'bcrypt', '~> 3.1.18'
+gem "solid_queue"
 
 # TODO: Remove eventually
 gem 'jquery-rails'

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
         end
       end
       #resources :students
+      get "/health", to: proc { [200, {}, ["OK"]] }
+
       namespace :member do
         resources :co_makers, only: [:index]
         resources :shares, only: [:index]
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
         only: [:index, :create]
 
       end
+
     end
   end
 
