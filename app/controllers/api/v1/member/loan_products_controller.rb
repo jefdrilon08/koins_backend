@@ -7,6 +7,7 @@ module Api
         def index
           products = ::LoanProduct
             .where(is_active: true)
+            .where.not(id: blocked_loan_product_ids)
             .order(:priority)
 
           render json: products.map { |p|
@@ -19,6 +20,25 @@ module Api
               monthly_interest_rate: p.monthly_interest_rate
             }
           }
+        end
+
+        private
+
+        def blocked_loan_product_ids
+          active_loans = current_member.loans.where(status: 'active')
+          return [] if active_loans.none?
+
+          blocked = []
+
+          active_loans.each do |loan|
+            unpaid_count = AmortizationScheduleEntry
+              .where(loan_id: loan.id, is_paid: false)
+              .count
+
+            blocked << loan.loan_product_id if unpaid_count <= 5
+          end
+
+          blocked
         end
       end
     end

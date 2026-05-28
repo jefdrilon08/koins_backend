@@ -33,7 +33,8 @@ module Api
               center_name: center&.name,
               status: member.status,
               identification_number: member.identification_number,
-              date_of_membership: membership_payment&.date_paid
+              date_of_membership: membership_payment&.date_paid,
+              member_type: member.member_type,
             }
           }
 
