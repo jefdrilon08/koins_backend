@@ -20,6 +20,13 @@ module Api
             date_voided: nil
           ).order(date_paid: :asc).first
 
+          insurance_payment = MembershipPaymentRecord.where(
+            member_id: member.id,
+            membership_type: "Insurance",
+            status: "paid",
+            date_voided: nil
+          ).order(date_paid: :asc).first
+
           render json: {
             token: token,
             member: {
@@ -35,6 +42,8 @@ module Api
               identification_number: member.identification_number,
               date_of_membership: membership_payment&.date_paid,
               member_type: member.member_type,
+              insurance_status: member.insurance_status,
+              insurance_date_of_membership: insurance_payment&.date_paid,
             }
           }
 

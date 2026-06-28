@@ -24,23 +24,26 @@ module Api
 
         private
 
-        def blocked_loan_product_ids
-          active_loans = current_member.loans.where(status: 'active')
-          return [] if active_loans.none?
+def blocked_loan_product_ids
+  blocked = []
 
-          blocked = []
+  # ── Block 1: Active loans with ≤ 5 unpaid installments ──────────────────
+  active_loans = current_member.loans.where(status: 'active')
+  active_loans.each do |loan|
+    unpaid_count = AmortizationScheduleEntry
+      .where(loan_id: loan.id, is_paid: false)
+      .count
+    blocked << loan.loan_product_id if unpaid_count <= 5
+  end
 
-          active_loans.each do |loan|
-            unpaid_count = AmortizationScheduleEntry
-              .where(loan_id: loan.id, is_paid: false)
-              .count
+  # ── Block 2: Pending/in-progress loan applications ───────────────────────
+  pending_product_ids = LoanApplication
+    .where(member_id: current_member.id)
+    .where.not(status: 'approved')
+    .pluck(:loan_product_id)
 
-            blocked << loan.loan_product_id if unpaid_count <= 5
-          end
-
-          blocked
-        end
-      end
+  blocked.concat(pending_product_ids).uniq
+end      end
     end
   end
 end

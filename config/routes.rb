@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
       get "project_types",
         to: "project_types#index"
+
+      get 'settings', to: 'settings#index'
         
       #namespace :addresses do
       #  get :regions,        to: "addresses#regions"
@@ -41,18 +43,27 @@ Rails.application.routes.draw do
       namespace :member do
         resources :co_makers, only: [:index]
         resources :shares, only: [:index]
+        resources :loan_installment_options, only: [:index]
         post "/register",
           to: "registrations#create"
         #resource :change_password, only: [:update]
         post "change_password",
           to: "change_passwords#update"
+        
+        get "accounts/insurance", to: "accounts#insurance"
+        #get "insurance_info", to: "accounts#insurance_info"
+        get "accounts/insurance_info",       to: "accounts#insurance_info"   # fix this too
+        get "accounts/:account_id/insurance_status", to: "accounts#insurance_status"  # ← add this
+
+
         resources :accounts, only: [:index] do 
           collection do
             get :equity
           end
         end
 
-        resources :beneficiaries, only: [:create]
+      
+        resources :beneficiaries, only: [:create, :index]
         get "check_mobile",    to: "registrations#check_mobile"
         get "check_duplicate", to: "registrations#check_duplicate"
         
@@ -64,12 +75,16 @@ Rails.application.routes.draw do
 
         get "/transactions/:account_id",
         to: "transactions#index"
+
       
       resources :loan_products,
         only: [:index]
 
-      resources :loan_applications,
-        only: [:index, :create]
+      resources :loan_applications, only: [:index, :create] do 
+        collection do
+          get :last
+        end
+      end
 
       end
 

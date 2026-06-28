@@ -15,20 +15,11 @@ module Api
               id: user.id,
               username: user.username,
               email: user.email,
+              insurance_status: user.insurance_status,
               branches: user.branches.where(user_branches: { active: true }).map do |b|
                 {
                   id: b.id,
                   name: b.name
-                  #centers: b.centers.map do |c|
-                  #  {
-                  #    id: c.id,
-                  #    name: c.name,
-                  #    short_name: c.short_name,
-                  #    meeting_day: c.meeting_day,
-                  #    lat: c.lat,
-                  #    lon: c.lon
-                  #  }
-                  #end
                 }
               end
             }

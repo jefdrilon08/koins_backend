@@ -293,6 +293,52 @@ module Api
 
           end
         end
+
+        # GET /api/v1/member/loan_applications/last
+def last
+  last_loan = current_member
+                .loans
+                .order(created_at: :desc)
+                .first
+  return render json: { found: false } if last_loan.nil?
+
+  pt  = ProjectType.find_by(id: last_loan.project_type_id)
+  ptc = pt ? ProjectTypeCategory.find_by(id: pt.project_type_category_id) : nil
+
+  loan_data     = last_loan.data || {}
+  co_maker_one  = loan_data["co_maker_one"] || {}
+
+  co_maker_two       = loan_data["co_maker_two"].to_s.strip
+  co_maker_two_parts = co_maker_two.split(" ")
+  co_maker_two_first = co_maker_two_parts[0] || ""
+  co_maker_two_last  = co_maker_two_parts[1..].join(" ")
+
+  # ── Co-maker active check ──────────────────────────────────────────────────
+  #co_maker_member = Member.find_by(id: co_maker_one["id"])
+  co_maker_member = ::Member.find_by(id: co_maker_one["id"])
+  co_maker_active = co_maker_member&.status == "active"   # adjust value to match your DB
+
+  co_maker_payload = if co_maker_active
+    {
+      member_id:  co_maker_one["id"].presence,
+      first_name: co_maker_one["first_name"].to_s,
+      last_name:  co_maker_one["last_name"].to_s
+    }
+  else
+    { member_id: nil, first_name: nil, last_name: nil }
+  end
+  # ──────────────────────────────────────────────────────────────────────────
+
+  render json: {
+    found: true,
+    project_type_category: ptc ? { id: ptc.id.to_s, name: ptc.name, code: ptc.code } : nil,
+    project_type:          pt  ? { id: pt.id.to_s,  name: pt.name,  code: pt.code,
+                                   project_type_category_id: pt.project_type_category_id.to_s } : nil,
+    co_maker:          co_maker_payload,
+    co_maker_sa_bahay: { first_name: co_maker_two_first, last_name: co_maker_two_last },
+    mobile_number:     current_member.mobile_number
+  }
+end
       end
     end
   end
